@@ -5,4 +5,4 @@ declare module "../js/AudioData" {
   };
 }
 
-export { };
+export {};
