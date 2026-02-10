@@ -89,9 +89,13 @@ async function initApp() {
   const bgMusic = loadAudio(AUDIO_DATA.bg);
   bgMusic.loop = true;
   bgMusic.play().catch(() => {
-    document.body.addEventListener("click", () => {
-      bgMusic.play();
-    }, { once: true });
+    document.body.addEventListener(
+      "click",
+      () => {
+        bgMusic.play();
+      },
+      { once: true },
+    );
   });
 
   const jumpSound = loadAudio(AUDIO_DATA.jump);
@@ -107,7 +111,7 @@ async function initApp() {
 
   for (let x = 0; x < app.screen.width; x += stripeWidth) {
     wallpaper.rect(x, 0, stripeWidth, app.screen.height * 0.68);
-    wallpaper.fill(toggle ? 0x8BC6FF : 0x9BD0FF);
+    wallpaper.fill(toggle ? 0x8bc6ff : 0x9bd0ff);
     toggle = !toggle;
   }
   app.stage.addChild(wallpaper);
@@ -176,7 +180,7 @@ async function initApp() {
   app.stage.hitArea = app.screen;
 
   let initialRotation = 0;
-  let ballLanding = { x: 0, y: 0 };
+  const ballLanding = { x: 0, y: 0 };
 
   app.stage.on("pointerdown", (e: FederatedPointerEvent) => {
     if (isJumping) return;
@@ -206,7 +210,6 @@ async function initApp() {
       jumpSound.play();
 
       setTimeout(() => {
-
         gsap.to(player, {
           duration: duration1,
           rotation: initialRotation + Math.PI * 2,
@@ -224,10 +227,8 @@ async function initApp() {
             ],
             curviness: 0.1,
             autoRotate: false,
-
           },
           onComplete: () => {
-
             player.rotation = 0;
             player.textures = landFrames;
             player.gotoAndPlay(0);
@@ -287,7 +288,6 @@ async function initApp() {
           },
         });
       }, 200);
-
     } else {
       console.log("[Moloco] Second click. isMoloco:", isMoloco());
       console.log("[Moloco] Detected?", isMoloco());
@@ -330,7 +330,7 @@ async function initApp() {
     let toggle = false;
     for (let x = 0; x < app.screen.width; x += stripeWidth) {
       wallpaper.rect(x, 0, stripeWidth, app.screen.height * 0.68);
-      wallpaper.fill(toggle ? 0x8BC6FF : 0x9BD0FF);
+      wallpaper.fill(toggle ? 0x8bc6ff : 0x9bd0ff);
       toggle = !toggle;
     }
 
