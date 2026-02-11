@@ -7,7 +7,9 @@
     "start": "npm run dev",
     "build": "npm run lint && tsc && vite build",
     "lint": "eslint .",
-    "dev": "vite"
+    "dev": "vite",
+    "preview": "vite preview",
+    "start:build": "npm run build && npm run preview"
   },
   "dependencies": {
     "gsap": "^3.14.2",
