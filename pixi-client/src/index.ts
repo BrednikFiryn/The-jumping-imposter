@@ -3,7 +3,6 @@ import {
   Sprite,
   Texture,
   Graphics,
-  FederatedPointerEvent,
 } from "pixi.js";
 import { AUDIO_DATA } from "./js/AudioData";
 import { IMAGE_DATA } from "./js/imageData";
@@ -182,14 +181,18 @@ async function initApp() {
   let initialRotation = 0;
   const ballLanding = { x: 0, y: 0 };
 
-  app.stage.on("pointerdown", (e: FederatedPointerEvent) => {
+  app.stage.on("pointerdown", () => {
     if (isJumping) return;
 
     if (!hasJumped) {
       hasJumped = true;
       isJumping = true;
       initialRotation = player.rotation;
-      showClickCircle(e.global.x, e.global.y);
+
+      showClickCircle(
+        player.x,
+        player.y + player.height / 2
+      );
 
       const ballLanding = {
         x: ball.x,
@@ -298,7 +301,7 @@ async function initApp() {
   function showClickCircle(x: number, y: number) {
     for (let i = 0; i < 2; i++) {
       const ring = new Graphics();
-      ring.circle(0, 0, 20);
+      ring.circle(0, 0, 40);
       ring.stroke({ width: 2, color: 0xffffff, alpha: 1 });
       ring.position.set(x, y);
       app.stage.addChild(ring);
