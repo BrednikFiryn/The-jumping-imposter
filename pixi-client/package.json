@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "start": "npm run dev",
-    "build": "npm run lint && tsc && vite build",
-    "lint": "eslint .",
-    "dev": "vite",
-    "preview": "vite preview",
-    "start:build": "npm run build && npm run preview"
+    "dev": "playable-scripts dev",
+    "build": "playable-scripts build",
+    "preview": "playable-scripts preview",
+    "start:build": "npm run build && npm run preview",
+    "lint": "eslint ."
   },
   "dependencies": {
     "gsap": "^3.14.2",
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@smoud/playable-scripts": "^1.1.4",
     "@types/gsap": "^1.20.2",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
